@@ -1,3 +1,4 @@
+const { response } = require("express");
 const querystring = require("querystring");
 
 const index = (req, res) => {
@@ -6,8 +7,9 @@ const index = (req, res) => {
 
     fetch('https://fakestoreapi.com/products?' + query)
             .then(res=>res.json())
-            .then((productos) => res.json(productos))
-}
+            .then((productos) => res.render('productos', { productos }));
+};
+
 
 const show = (req, res) => {
     fetch('https://fakestoreapi.com/products/' + req.params.id)
